@@ -1,4 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
@@ -40,6 +39,8 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      "clangd",
+      "lua_ls"
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -54,6 +55,18 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      lua_ls = function(_, opts)
+        local lspconfig = require("lspconfig")
+        lspconfig.lua_ls.setup({
+          cmd = { "lua-language-server" },
+        })
+      end,
+      clangd = function(_, opts)
+        local lspconfig = require("lspconfig")
+        lspconfig.clangd.setup({
+          cmd = { "clangd" },
+        })
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
