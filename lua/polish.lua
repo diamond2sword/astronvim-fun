@@ -1,4 +1,3 @@
-if true then return end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- This will run last in the setup process and is a good place to configure
 -- things like custom filetypes. This is just pure lua so anything that doesn't
@@ -16,3 +15,11 @@ vim.filetype.add {
     ["~/%.config/foo/.*"] = "fooscript",
   },
 }
+
+local hl_groups = vim.api.nvim_get_hl(0, {})
+
+for key, hl_group in pairs(hl_groups) do
+  if hl_group.italic then
+    vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, {italic = false}))
+  end
+end
