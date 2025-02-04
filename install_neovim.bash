@@ -35,8 +35,11 @@ pkg install wget git clang
 	# 	termux-reload-settings
 	# )
 	# rm -rf ~/downloads/JetBrainsMono
-	mkdir -p ~/.termux
-	curl -LJ -o "~/.termux/font.ttf" "https://raw.githubusercontent.com/diamond2sword/astronvim-fun/refs/heads/main/font/JetBrainsMonoNerdFontMono-Regular.ttf"
+	(
+		mkdir -p ~/.termux
+		cd ~/.termux
+		curl -LJO https://raw.githubusercontent.com/diamond2sword/astronvim-fun/refs/heads/main/font/JetBrainsMonoNerdFontMono-Regular.ttf
+	)
 
 	pkg install neovim
 
