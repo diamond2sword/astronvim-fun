@@ -23,3 +23,4 @@ for key, hl_group in pairs(hl_groups) do
     vim.api.nvim_set_hl(0, key, vim.tbl_extend("force", hl_group, {italic = false}))
   end
 end
+

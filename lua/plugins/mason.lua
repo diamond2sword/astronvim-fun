@@ -28,9 +28,10 @@ return {
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
       ensure_installed = {
-        "cppdbg",
         -- add more arguments for adding more debuggers
       },
+      handlers = {
+      }
     },
   },
 }
