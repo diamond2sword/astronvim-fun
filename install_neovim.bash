@@ -26,15 +26,6 @@ pkg install wget git clang
 #https://docs.astronvim.com/
 {
 	#https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
-	# mkdir -p ~/downloads/JetBrainsMono
-	# (
-	# 	cd ~/downloads/JetBrainsMono
-	# 	curl -LJO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip"
-	# 	unzip JetBrainsMono.zip
-	# 	cp JetBrainsMonoNerdFontMono-Regular.ttf ~/.termux/font.ttf
-	# 	termux-reload-settings
-	# )
-	# rm -rf ~/downloads/JetBrainsMono
 	(
 		mkdir -p ~/.termux
 		cd ~/.termux
