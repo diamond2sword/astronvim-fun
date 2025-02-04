@@ -7,7 +7,7 @@ pkg install wget git clang which termux-api lua54
 	pkg install lua-language-server clang
 
 	# debug
-	pkg install gdb
+	pkg install gdb lldb
 }
 
 #https://docs.astronvim.com/
