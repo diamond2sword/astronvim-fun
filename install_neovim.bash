@@ -17,7 +17,7 @@ pkg install wget git clang which termux-api lua54
 	(
 		cd ~/downloads/JetBrainsMono
 		curl -LJO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip"
-		unzip -d JetBrainsMono.zip
+		unzip JetBrainsMono.zip
 		cp JetBrainsMonoNerdFontMono-Regular.ttf ~/.termux/font.ttf
 		termux-reload-settings
 	)
