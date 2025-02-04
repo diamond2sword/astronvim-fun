@@ -28,13 +28,14 @@ pkg install wget git clang
 	#https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
 	(
 		mkdir -p ~/.termux
-		cd ~/.termux
-		curl -LJO https://raw.githubusercontent.com/diamond2sword/astronvim-fun/refs/heads/main/font/JetBrainsMonoNerdFontMono-Regular.ttf
+		curl -LJ -o ~/.termux/font.ttf  https://raw.githubusercontent.com/diamond2sword/astronvim-fun/refs/heads/main/font/JetBrainsMonoNerdFontMono-Regular.ttf
+		termux-reload-settings
 	)
 
 	pkg install neovim
 
 	git clone https://github.com/diamond2sword/astronvim-fun ~/.config/nvim
 
-	nvim
+	nvim --headless +'AstroUpdate' +q
+	nvim --headless +'Lazy! sync' +q
 }
