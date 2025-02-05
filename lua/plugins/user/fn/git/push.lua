@@ -33,10 +33,9 @@ end
 local git_push = function(commit_name)
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
-
-  local cmd = 'bash '..git_bash_path..' push '..commit_name
   vim.notify(' Git Push: Pushing...', vim.log.levels.INFO)
 
+  local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
     on_exit = function(_, _, exit_code)
       if exit_code == 0 then
