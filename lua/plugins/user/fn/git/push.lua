@@ -11,13 +11,13 @@ return function()
   vim.notify(' Git Push: Pushing...', vim.log.levels.INFO)
 
   local cmd = 'bash '..git_bash_path..' push'
-  vim.g.current_win = vim.api.nvim_get_current_win()
+  local current_win = vim.api.nvim_get_current_win()
 
   local Terminal = require("toggleterm.terminal").Terminal
   local term = Terminal:new({
     cmd = cmd,
     hidden = false,
-    direction = "horizontal",
+    direction = "float",
     on_exit = function(_, _, exit_code)
       if exit_code == 0 then
         vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
@@ -25,11 +25,8 @@ return function()
         vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
       end
     end,
-    on_close = function()
-      vim.api.nvim_set_current_win(vim.g.current_win)
-    end,
     on_create = function()
-      vim.api.nvim_set_current_win(vim.g.current_win)
+      vim.api.nvim_set_current_win(current_win)
       vim.api.nvim_input('<Esc>')
     end,
     auto_scroll = true,
