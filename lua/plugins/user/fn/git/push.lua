@@ -37,10 +37,11 @@ end
 
 return function()
   vim.ui.input({
-    prompt = ' Commit name: ',
-    completion = 'Update project: '
+    prompt = ' Git Push: Commit name',
+    default = 'Updated project'
   }, function(input)
-    local commit_name = input or ''
+    if input == nil then return end
+    local commit_name = input
     push(commit_name)
   end)
 end
