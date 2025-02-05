@@ -33,7 +33,7 @@ return {
 
             local Terminal = require("toggleterm.terminal").Terminal
             local term = Terminal:new({
-              cmd = cmd,
+              cmd = cmd..'\nsleep 3',
               hidden = false,
               direction = "horizontal",
               on_open = function()
