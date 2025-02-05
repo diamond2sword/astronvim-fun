@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pkg install wget git clang
+pkg install wget git clang ripgrep
 
 {
 	# misc
