@@ -30,7 +30,7 @@ local toggleterm_cmd = function(cmd, override_opts)
   term:toggle()
 end
 
-local push = function(commit_name)
+local git_push = function(commit_name)
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
 
@@ -54,6 +54,6 @@ return function()
     default = 'Update project'
   }, function(commit_name)
     if commit_name == nil then return end
-    push(commit_name)
+    git_push(commit_name)
   end)
 end
