@@ -26,11 +26,25 @@ return {
             end
 
             vim.notify(' Git Push: Pushing...: '..git_bash_path, vim.log.levels.INFO)
-            vim.fn.jobstart('bash '..git_bash_path..' push', {
-              on_exit = function()
-                vim.notify(" Git Push: Pushed!", vim.log.levels.INFO)
-              end,
+
+            local cmd = 'bash '..git_bash_path..' push'
+
+            local Terminal = require("toggleterm.terminal").Terminal
+            local term = Terminal:new({
+              cmd = cmd,
+              hidden = false,
+              direction = "horizontal",
+              -- close_on_exit = true,
+              -- auto_scroll = true,
             })
+            term:toggle()
+
+
+            -- vim.fn.jobstart(cmd, {
+            --   on_exit = function()
+            --     vim.notify(" Git Push: Pushed!", vim.log.levels.INFO)
+            --   end,
+            -- })
           end,
           desc = " Git Push"
         }
