@@ -3,11 +3,6 @@ if not ok then
     return
 end
 
---
--- See
--- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Interpreters.html
--- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html
-
 local ask_file = function()
     local path = vim.fn.input({
         prompt = 'Path to executable: ',
@@ -16,8 +11,6 @@ local ask_file = function()
     })
     return (path and path ~= '') and path or dap.ABORT
 end
--- This requires special handling of 'run_last', see
--- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
 
 local ask_args = function()
     local args_str = vim.fn.input({
@@ -60,6 +53,4 @@ local add_executable_adapter = function(config, executable, args)
     end
 end
 
-dap.configurations.c = {}
-add_executable_adapter(dap.configurations.c, 'lldb-dap')
-add_executable_adapter(dap.configurations.c, 'gdb', { '--interpreter=dap' })
+return add_executable_adapter

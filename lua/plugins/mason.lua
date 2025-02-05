@@ -1,3 +1,8 @@
+if true then return {
+  require("plugins.user.dap"),
+} end
+
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- Customize Mason plugins
 

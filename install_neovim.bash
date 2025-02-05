@@ -13,6 +13,11 @@ pkg install wget git clang
 }
 
 {
+	#go-to-definition
+	pkg install man
+}
+
+{
 	# treesitter
 	pkg install clang
 
