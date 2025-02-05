@@ -24,6 +24,10 @@ return function()
       else
         vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
       end
+      vim.g.current_win = vim.api.nvim_get_current_win()
+    end,
+    on_close = function()
+      vim.api.nvim_set_current_win(vim.g.current_win)
     end,
     on_create = function()
       vim.api.nvim_set_current_win(current_win)
