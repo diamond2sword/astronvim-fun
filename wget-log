@@ -1,0 +1,58 @@
+HTTP request sent, awaiting response... 200 OK
+Length: 12626 (12K) [application/javascript]
+Saving to: ‘www.nerdfonts.com/cheat-sheet.js’
+
+
+
+2025-02-05 22:01:10 (31.1 KB/s) - ‘www.nerdfonts.com/cheat-sheet.js’ saved [12626/12626]
+
+--2025-02-05 22:01:10--  https://www.nerdfonts.com/assets/fonts/Symbols-2048-em%20Nerd%20Font%20Complete%20v233.woff2
+Reusing existing connection to www.nerdfonts.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 142056 (139K) [font/woff2]
+Saving to: ‘www.nerdfonts.com/assets/fonts/Symbols-2048-em Nerd Font Complete v233.woff2’
+
+
+
+2025-02-05 22:01:12 (95.3 KB/s) - ‘www.nerdfonts.com/assets/fonts/Symbols-2048-em Nerd Font Complete v233.woff2’ saved [142056/142056]
+
+--2025-02-05 22:01:12--  https://www.nerdfonts.com/assets/fonts/Symbols-2048-em%20Nerd%20Font%20Complete.woff2
+Reusing existing connection to www.nerdfonts.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 1069080 (1.0M) [font/woff2]
+Saving to: ‘www.nerdfonts.com/assets/fonts/Symbols-2048-em Nerd Font Complete.woff2’
+
+rdfonts.com/assets/fonts/  93%[===============================>   ] 979.56K  --.-KB/s    eta 4m 31s www.nerdfonts.com/assets/  93%[===============================>   ] 979.56K  --.-KB/s    in 68m 42s 
+
+2025-02-05 23:09:53 (243 B/s) - Read error at byte 1003072/1069080 (Connection timed out). Retrying.
+
+--2025-02-05 23:09:54--  (try: 2)  https://www.nerdfonts.com/assets/fonts/Symbols-2048-em%20Nerd%20Font%20Complete.woff2
+Connecting to www.nerdfonts.com (www.nerdfonts.com)|185.199.110.153|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 1069080 (1.0M), 66008 (64K) remaining [font/woff2]
+Saving to: ‘www.nerdfonts.com/assets/fonts/Symbols-2048-em Nerd Font Complete.woff2’
+
+        [ skipping 950K ]
+   950K ,,,,,,,,,, ,,,,,,,,,, ,,,,,,,,,. .......... .......... 95% 31.7K 3s
+  1000K .......... .......... .......... .......... ....      100%  112K=2.0s
+
+2025-02-05 23:09:57 (32.7 KB/s) - ‘www.nerdfonts.com/assets/fonts/Symbols-2048-em Nerd Font Complete.woff2’ saved [1069080/1069080]
+
+--2025-02-05 23:09:57--  https://www.nerdfonts.com/assets/img/bgnoise.png
+Reusing existing connection to www.nerdfonts.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 15248 (15K) [image/png]
+Saving to: ‘www.nerdfonts.com/assets/img/bgnoise.png’
+
+     0K .......... ....                                       100% 65.5K=0.2s
+
+2025-02-05 23:09:57 (65.5 KB/s) - ‘www.nerdfonts.com/assets/img/bgnoise.png’ saved [15248/15248]
+
+FINISHED --2025-02-05 23:09:57--
+Total wall clock time: 1h 9m 53s
+Downloaded: 10 files, 1.3M in 1h 9m 10s (331 B/s)
+www.nerdfonts.com/cheat-sheet: No such file or directory
+Converting links in www.nerdfonts.com/cheat-sheet... nothing to do.
+www.nerdfonts.com/assets/css/combo.css: No such file or directory
+Converting links in www.nerdfonts.com/assets/css/combo.css... nothing to do.
+Converted links in 2 files in 0 seconds.

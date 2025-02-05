@@ -38,7 +38,7 @@ return {
               direction = "horizontal",
               on_open = function()
                 vim.api.nvim_set_current_win(current_win)
-                vim.cmd('normal!')
+                vim.api.nvim_input('<Esc>')
               end,
               -- close_on_exit = true,
               auto_scroll = true,
