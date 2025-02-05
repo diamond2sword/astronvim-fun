@@ -30,7 +30,13 @@ local toggleterm_cmd = function(cmd, override_opts)
   term:toggle()
 end
 
-local push = function(commit_name)
+return function()
+  local commit_name = vim.fn.input({
+    prompt = ' Git Push: Commit name: ',
+    default = 'Updated project'
+  })
+  if commit_name == nil then return end
+
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
 
@@ -46,35 +52,4 @@ local push = function(commit_name)
       end
     end,
   })
-  -- local Terminal = require("toggleterm.terminal").Terminal
-  -- local current_win = vim.api.nvim_get_current_win()
-  -- local term = Terminal:new({
-  --   cmd = cmd,
-  --   hidden = false,
-  --   direction = "horizontal",
-  --   on_exit = function(_, _, exit_code)
-  --     if exit_code == 0 then
-  --       vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
-  --     else
-  --       vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
-  --     end
-  --   end,
-  --   on_create = function()
-  --     vim.api.nvim_set_current_win(current_win)
-  --     vim.api.nvim_input('<Esc>')
-  --   end,
-  --   auto_scroll = true,
-  -- })
-  -- term:toggle()
-end
-
-return function()
-  vim.ui.input({
-    prompt = ' Git Push: Commit name',
-    default = 'Updated project'
-  }, function(input)
-    if input == nil then return end
-    local commit_name = input
-    push(commit_name)
-  end)
 end
