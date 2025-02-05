@@ -30,13 +30,7 @@ local toggleterm_cmd = function(cmd, override_opts)
   term:toggle()
 end
 
-return function()
-  local commit_name = vim.fn.input({
-    prompt = ' Git Push: Commit name: ',
-    default = 'Updated project'
-  })
-  if commit_name == nil then return end
-
+local push = function(commit_name)
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
 
@@ -52,4 +46,14 @@ return function()
       end
     end,
   })
+end
+
+return function()
+  vim.ui.input({
+    prompt = ' Git Push: Commit name',
+    default = 'Update project'
+  }, function(commit_name)
+    if commit_name == nil then return end
+    push(commit_name)
+  end)
 end
