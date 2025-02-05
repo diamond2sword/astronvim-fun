@@ -1,4 +1,4 @@
-return function()
+local push = function(commit_name)
   local buf_path = vim.api.nvim_buf_get_name(0)
   local buf_dir = vim.fn.fnamemodify(buf_path, ":h")
   local repo_dir = vim.fn.systemlist("git -C "..buf_dir.." rev-parse --show-toplevel")[1]
@@ -7,11 +7,12 @@ return function()
     vim.notify(" git.bash does not exist in repo", vim.log.levels.WARN)
     return
   end
+  local current_win = vim.api.nvim_get_current_win()
+  
 
   vim.notify(' Git Push: Pushing...', vim.log.levels.INFO)
 
-  local cmd = 'bash '..git_bash_path..' push'
-  local current_win = vim.api.nvim_get_current_win()
+  local cmd = 'bash '..git_bash_path..' push '..commit_name
 
   local Terminal = require("toggleterm.terminal").Terminal
   local term = Terminal:new({
@@ -32,4 +33,14 @@ return function()
     auto_scroll = true,
   })
   term:toggle()
+end
+
+return function()
+  vim.ui.input({
+    prompt = ' Commit name: ',
+    completion = 'Update project: '
+  }, function(input)
+    local commit_name = input or ''
+    push(commit_name)
+  end)
 end
