@@ -17,7 +17,7 @@ return function()
   local term = Terminal:new({
     cmd = cmd,
     hidden = false,
-    direction = "vertical",
+    direction = "horizontal",
     on_exit = function(_, _, exit_code)
       if exit_code == 0 then
         vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
