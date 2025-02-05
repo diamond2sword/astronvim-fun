@@ -26,12 +26,11 @@ return {
             end
 
             vim.notify(' Git Push: Pushing...: '..git_bash_path, vim.log.levels.INFO)
-            vim.cmd('!bash '..git_bash_path..' push')
-            -- vim.fn.jobstart('bash '..git_bash_path..' push', {
-            --   on_exit = function()
-            --     vim.notify(" Git Push: Pushed!", vim.log.levels.INFO)
-            --   end,
-            -- })
+            vim.fn.jobstart('bash '..git_bash_path..' push', {
+              on_exit = function()
+                vim.notify(" Git Push: Pushed!", vim.log.levels.INFO)
+              end,
+            })
           end,
           desc = " Git Push"
         }
