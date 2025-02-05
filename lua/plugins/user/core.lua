@@ -33,10 +33,10 @@ return {
 
             local Terminal = require("toggleterm.terminal").Terminal
             local term = Terminal:new({
-              cmd = cmd..'\nsleep 3',
+              cmd = cmd,
               hidden = false,
               direction = "horizontal",
-              on_open = function()
+              on_create = function()
                 vim.api.nvim_set_current_win(current_win)
                 vim.api.nvim_input('<Esc>')
               end,
