@@ -10,7 +10,7 @@ local push = function(commit_name)
   local current_win = vim.api.nvim_get_current_win()
   
 
-  vim.notify(' Git Push: Pushing...\nCommit:'..commit_name, vim.log.levels.INFO)
+  vim.notify(' Git Push: Pushing...', vim.log.levels.INFO)
 
   local cmd = 'bash '..git_bash_path..' push '..commit_name
 
@@ -18,6 +18,7 @@ local push = function(commit_name)
   local term = Terminal:new({
     cmd = cmd,
     hidden = false,
+    display_name = " Git Push: '"..commit_name.."'",
     direction = "horizontal",
     on_exit = function(_, _, exit_code)
       if exit_code == 0 then
