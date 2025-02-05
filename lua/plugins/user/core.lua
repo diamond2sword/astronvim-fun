@@ -40,7 +40,7 @@ return {
                 vim.api.nvim_set_current_win(current_win)
               end,
               -- close_on_exit = true,
-              -- auto_scroll = true,
+              auto_scroll = true,
             })
             term:toggle()
 
