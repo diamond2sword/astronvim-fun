@@ -36,6 +36,13 @@ return {
               cmd = cmd,
               hidden = false,
               direction = "horizontal",
+              on_exit = function(_, _, exit_code)
+                if exit_code == 0 then
+                  vim.notify(' Git Push: Done', vim.log.levels.INFO)
+                else
+                  vim.notify(' Git Push: Error', vim.log.levels.ERROR)
+                end
+              end,
               on_create = function()
                 vim.api.nvim_set_current_win(current_win)
                 vim.api.nvim_input('<Esc>')
