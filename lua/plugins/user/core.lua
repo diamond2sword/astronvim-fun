@@ -5,6 +5,20 @@ return {
       opt = { -- vim.opt.<key>
         wrap = true, -- sets vim.opt.wrap
         clipboard = "", -- don't integrate termux-clipboard
+        swapfile = false,
+        -- optimizations
+        lazyredraw = true,
+        synmaxcol = 200,
+        updatetime = 200, -- disagnostics
+        timeoutlen = 250, -- keymaps
+        ttimeoutlen = 0, -- instant key
+        hidden = true, -- buffers
+        backup = false, -- no files
+        writebackup = false,
+        autoread = true,
+        undofile = true, -- persistent history
+        redrawtime = 1000, -- timeout
+        termguicolors = true, -- better colors
       }
     },
     mappings = {
@@ -26,7 +40,7 @@ return {
           desc = " Buffer's Swap File",
         },
         ['<Leader>bSd'] = {
-          require('plugins.user.fn.buf.rm'),
+          require('plugins.user.fn.buf.rm-swp'),
           desc = " Delete Buffer's Swap File"
         },
       },
