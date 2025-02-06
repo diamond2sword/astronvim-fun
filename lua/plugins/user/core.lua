@@ -16,28 +16,24 @@ return {
         },
         ["<Leader>g<C-s>"] = {
           require('plugins.user.fn.git.push'),
-          desc = " Git Push"
+          desc = " Git Push"
         },
         ['<Leader>S<C-d>'] = {
-          function()
-            local shada_dir = vim.fn.stdpath("state").."/shada"
-            local cmd = 'rm -rf '..shada_dir.."/*"
-            require("plugins.user.fn.toggleterm.cmd")(cmd)
-          end,
-          desc = "Delete All Shada Files"
+          require('plugins.user.fn.session.rm-shada'),
+          desc = "󰛌 Delete All Shada Files"
         },
         ['<Leader>bS'] = {
-          desc = "Buffer's Swap File",
+          desc = " Buffer's Swap File",
         },
         ['<Leader>bSd'] = {
           require('plugins.user.fn.buf.rm'),
-          desc = "Delete Buffer's Swap File"
+          desc = " Delete Buffer's Swap File"
         },
       },
       v = {
         ["<C-c>"] = {
           require('plugins.user.fn.termux.copy'),
-          desc = " Copy",
+          desc = " Copy",
         },
       },
     },
