@@ -12,7 +12,7 @@ end
 
 local toggleterm_cmd = require('plugins.user.fn.toggleterm.cmd')
 
-return function(opts)
+return function()
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
   local default_cmd = 'bash '..git_bash_path..' push \"\'Update project\'\"'
