@@ -15,9 +15,9 @@ local toggleterm_cmd = require('plugins.user.fn.toggleterm.cmd')
 local notifier_exit_code = function(msg_cmd, msg_ok, msg_err)
   return function(exit_code)
     if exit_code == 0 then
-      vim.notify((msg_ok or 'SUCCESS')..': '..msg_cmd, vim.log.levels.INFO)
+      vim.notify(msg_cmd..': '..(msg_ok or 'SUCCESS'), vim.log.levels.INFO)
     else
-      vim.notify((msg_err or 'ERROR')..': '..msg_cmd, vim.log.levels.ERROR)
+      vim.notify(msg_cmd..': '..(msg_err or 'ERROR'), vim.log.levels.ERROR)
     end
   end
 end
@@ -30,7 +30,7 @@ local git_push = function(commit_name)
   local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
     on_exit = function(_, _, exit_code)
-      notifier_exit_code()(exit_code)
+      notifier_exit_code(' Git Push')(exit_code)
       -- if exit_code == 0 then
       --   vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
       -- else
