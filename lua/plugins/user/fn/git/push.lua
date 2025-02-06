@@ -12,19 +12,15 @@ end
 
 local toggleterm_cmd = require('plugins.user.fn.toggleterm.cmd')
 
-local git_push = function(commit_name)
+return function()
   local git_bash_path = get_git_bash_path()
   if git_bash_path == nil then return end
-  local cmd = 'bash '..git_bash_path..' push '..commit_name
-  toggleterm_cmd(cmd)
-end
-
-return function()
+  local default_cmd = 'bash '..git_bash_path..' push \"\'Update project\'\"'
   vim.ui.input({
-    prompt = ' Git Push: Commit name',
-    default = 'Update project'
-  }, function(commit_name)
-    if commit_name == nil then return end
-    git_push(commit_name)
+    prompt = ' Git Push: Confirm',
+    default =  default_cmd
+  }, function(cmd)
+    if cmd == nil then return end
+    toggleterm_cmd(cmd)
   end)
 end
