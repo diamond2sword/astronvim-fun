@@ -58,9 +58,9 @@ local git_push = function(commit_name)
 
   local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
-    on_exit = function(_, _, exit_code)
-      notify_exit_code(' Git Push', 'Pushed!', 'Unable to push')(exit_code)
-    end,
+    -- on_exit = function(_, _, exit_code)
+    --   notify_exit_code(' Git Push', 'Pushed!', 'Unable to push')(exit_code)
+    -- end,
   })
 end
 
