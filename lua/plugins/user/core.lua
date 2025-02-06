@@ -18,8 +18,7 @@ return {
           require('plugins.user.fn.git.push'),
           desc = " Git Push"
         },
-        ['<Leader>ps'] = { desc = "Shada Files" },
-        ['<Leader>psd'] = {
+        ['<Leader>S<C-d>'] = {
           function()
             local shada_dir = vim.fn.stdpath("state").."/shada"
             local cmd = 'rm -rf '..shada_dir.."/*"
@@ -31,12 +30,6 @@ return {
           desc = "Buffer's Swap File",
         },
         ['<Leader>bSd'] = {
-          -- function()
-          --   local buf_name = vim.api.nvim_buf_get_name(0)
-          --   local swp_file = vim.fn.swapname(buf_name)
-          --   local cmd = 'rm -rf '..swp_file
-          --   require("plugins.user.fn.toggleterm.cmd")(cmd)
-          -- end,
           require('plugins.user.fn.buf.rm'),
           desc = "Delete Buffer's Swap File"
         },
