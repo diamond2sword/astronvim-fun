@@ -26,9 +26,11 @@ local cmds_join = function(cmds)
   return cmd_result
 end
 
+local first_file_win = require('plugins.user.fn.buf.first-file-win')
+
 local toggleterm_cmd = function(cmd, opts)
-  local Terminal = require("toggleterm.terminal").Terminal
-  local current_win = vim.api.nvim_get_current_win()
+  local current_win = first_file_win()
+  if current_win == nil then return end
   local default_opts = {
     cmd = cmd,
     sleep = 3,
@@ -48,6 +50,7 @@ local toggleterm_cmd = function(cmd, opts)
   local sleep_cmd = 'sleep '..default_opts.sleep
   default_opts.cmd = cmds_join({echo_cmd, default_opts.cmd, sleep_cmd})
 
+  local Terminal = require("toggleterm.terminal").Terminal
   local term = Terminal:new(default_opts)
   term:toggle()
   vim.notify(cmd..'\n\n'..'EXECUTING...')
