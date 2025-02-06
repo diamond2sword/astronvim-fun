@@ -23,6 +23,15 @@ toggleterm_cmd = function(cmd, override_opts)
       vim.api.nvim_input('<Esc>')
     end,
     auto_scroll = true,
+    on_exit = function(_, _, exit_code)
+      -- local notify = notify_exit_code(' Git Push')
+      -- notify(exit_code)
+      if exit_code == 0 then
+        vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
+      else
+        vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
+      end
+    end,
   }
   for _, p in ipairs(override_opts) do
     table.insert(term_opts, p)
