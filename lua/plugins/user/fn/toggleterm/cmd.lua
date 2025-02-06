@@ -18,7 +18,8 @@ local toggleterm_cmd = function(cmd, opts)
   local Terminal = require("toggleterm.terminal").Terminal
   local current_win = vim.api.nvim_get_current_win()
   local default_opts = {
-    cmd = cmd..'\nsleep 1',
+    cmd = cmd,
+    sleep = 3,
     hidden = false,
     direction = "horizontal",
     on_create = function()
@@ -31,6 +32,8 @@ local toggleterm_cmd = function(cmd, opts)
     end,
   }
   table_override(default_opts, opts)
+  default_opts.cmd = default_opts.cmd..'\nsleep '..default_opts.sleep
+
   local term = Terminal:new(default_opts)
   term:toggle()
   vim.notify(cmd..'\n\n'..'EXECUTING...')
