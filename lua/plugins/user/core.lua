@@ -22,21 +22,22 @@ return {
         ['<Leader>psd'] = {
           function()
             local shada_dir = vim.fn.stdpath("state").."/shada"
-            vim.fn.jobstart('rm -rf '..shada_dir.."/*", {
-              on_exit = function()
-                vim.notify('Deleted Shada All Files')
-              end,
-            })
+            local cmd = 'rm -rf '..shada_dir.."/*"
+            require("plugins.user.fn.toggleterm.cmd")(cmd)
           end,
           desc = "Delete All Shada Files"
         },
-        ['<Leader>sd'] = {
-          function()
-            local swp_file = vim.fn.swapname()
-            if swp_file ~= "" and vim.fn.filereadable(swp_file) then
-              vim.fn.delete(swp_file)
-            end
-          end,
+        ['<Leader>bS'] = {
+          desc = "Buffer's Swap File",
+        },
+        ['<Leader>bSd'] = {
+          -- function()
+          --   local buf_name = vim.api.nvim_buf_get_name(0)
+          --   local swp_file = vim.fn.swapname(buf_name)
+          --   local cmd = 'rm -rf '..swp_file
+          --   require("plugins.user.fn.toggleterm.cmd")(cmd)
+          -- end,
+          require('plugins.user.fn.buf.rm'),
           desc = "Delete Buffer's Swap File"
         },
       },
