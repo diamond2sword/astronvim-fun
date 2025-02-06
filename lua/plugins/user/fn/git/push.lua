@@ -32,11 +32,11 @@ local git_push = function(commit_name)
     on_exit = function(_, _, exit_code)
       local notify = notify_exit_code(' Git Push')
       notify(exit_code)
-      -- if exit_code == 0 then
-      --   vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
-      -- else
-      --   vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
-      -- end
+      if exit_code == 0 then
+        vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
+      else
+        vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
+      end
     end,
   })
 end
