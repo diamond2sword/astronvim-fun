@@ -30,8 +30,8 @@ local git_push = function(commit_name)
   local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
     on_exit = function(_, _, exit_code)
-      local notify = notify_exit_code(' Git Push')
-      notify(exit_code)
+      -- local notify = notify_exit_code(' Git Push')
+      -- notify(exit_code)
       if exit_code == 0 then
         vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
       else
