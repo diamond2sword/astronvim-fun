@@ -45,7 +45,7 @@ local toggleterm_cmd = function(cmd, opts)
   }
   table_override(default_opts, opts)
   local echo_cmd = 'cat << "ECHO_CMD_EOF"\n'..cmd..'\nECHO_CMD_EOF'
-  local sleep_cmd = 'sleep '..default_opts.sleep
+  local sleep_cmd = 'sleep -v '..default_opts.sleep
   default_opts.cmd = cmds_join({echo_cmd, default_opts.cmd, sleep_cmd})
 
   local term = Terminal:new(default_opts)
