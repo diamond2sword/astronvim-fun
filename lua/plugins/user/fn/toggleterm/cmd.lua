@@ -1,4 +1,3 @@
-
 return function(cmd, override_opts)
   local Terminal = require("toggleterm.terminal").Terminal
   local current_win = vim.api.nvim_get_current_win()
