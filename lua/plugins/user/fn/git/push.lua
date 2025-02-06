@@ -10,11 +10,29 @@ local get_git_bash_path = function()
   return git_bash_path
 end
 
+Table = {}
+
+local function override_with(table, opts)
+  for k, v in pairs(opts) do
+    table[k] = v
+  end
+end
+
+local notify_exit_code = function(msg_cmd, msg_ok, msg_err)
+  return function(exit_code)
+    if exit_code == 0 then
+      vim.notify(msg_cmd..'\n'..(msg_ok or 'SUCCESS'), vim.log.levels.INFO)
+    else
+      vim.notify(msg_cmd..'\n'..(msg_err or 'ERROR'), vim.log.levels.ERROR)
+    end
+  end
+end
+
 local toggleterm_cmd = require('plugins.user.fn.toggleterm.cmd')
-toggleterm_cmd = function(cmd, override_opts)
+toggleterm_cmd = function(cmd, opts)
   local Terminal = require("toggleterm.terminal").Terminal
   local current_win = vim.api.nvim_get_current_win()
-  local term_opts = {
+  local default_opts = {
     cmd = cmd,
     hidden = false,
     direction = "horizontal",
@@ -23,23 +41,15 @@ toggleterm_cmd = function(cmd, override_opts)
       vim.api.nvim_input('<Esc>')
     end,
     auto_scroll = true,
+    on_exit = function(_, _, exit_code)
+      notify_exit_code(cmd)(exit_code)
+    end,
   }
-  for k, v in pairs(override_opts) do
-    term_opts[k] = v
-  end
-  local term = Terminal:new(term_opts)
+  override_with(default_opts, opts)
+  local term = Terminal:new(default_opts)
   term:toggle()
 end
 
-local notify_exit_code = function(msg_cmd, msg_ok, msg_err)
-  return function(exit_code)
-    if exit_code == 0 then
-      vim.notify(msg_cmd..': '..(msg_ok or 'SUCCESS'), vim.log.levels.INFO)
-    else
-      vim.notify(msg_cmd..': '..(msg_err or 'ERROR'), vim.log.levels.ERROR)
-    end
-  end
-end
 
 local git_push = function(commit_name)
   local git_bash_path = get_git_bash_path()
@@ -49,13 +59,7 @@ local git_push = function(commit_name)
   local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
     on_exit = function(_, _, exit_code)
-      -- local notify = notify_exit_code(' Git Push')
-      -- notify(exit_code)
-      if exit_code == 0 then
-        vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
-      else
-        vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
-      end
+      notify_exit_code(' Git Push', 'Pushed!', 'Unable to push')(exit_code)
     end,
   })
 end
