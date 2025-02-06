@@ -6,6 +6,7 @@ return {
       "bash",
       "lua",
       "c",
+      "cpp",
     },
   },
 }

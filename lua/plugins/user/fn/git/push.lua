@@ -10,24 +10,16 @@ local get_git_bash_path = function()
   return git_bash_path
 end
 
-local toggleterm_cmd = function(cmd, override_opts)
-  local Terminal = require("toggleterm.terminal").Terminal
-  local current_win = vim.api.nvim_get_current_win()
-  local term_opts = {
-    cmd = cmd,
-    hidden = false,
-    direction = "horizontal",
-    on_create = function()
-      vim.api.nvim_set_current_win(current_win)
-      vim.api.nvim_input('<Esc>')
-    end,
-    auto_scroll = true,
-  }
-  for _, p in ipairs(override_opts) do
-    table.insert(term_opts, p)
+local toggleterm_cmd = require('plugins.user.fn.toggleterm.cmd')
+
+local notifier_exit_code = function(msg_cmd, msg_ok, msg_err)
+  return function(exit_code)
+    if exit_code == 0 then
+      vim.notify((msg_ok or 'SUCCESS')..': '..msg_cmd, vim.log.levels.INFO)
+    else
+      vim.notify((msg_err or 'ERROR')..': '..msg_cmd, vim.log.levels.ERROR)
+    end
   end
-  local term = Terminal:new(term_opts)
-  term:toggle()
 end
 
 local git_push = function(commit_name)
@@ -38,11 +30,12 @@ local git_push = function(commit_name)
   local cmd = 'bash '..git_bash_path..' push '..commit_name
   toggleterm_cmd(cmd, {
     on_exit = function(_, _, exit_code)
-      if exit_code == 0 then
-        vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
-      else
-        vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
-      end
+      notifier_exit_code()(exit_code)
+      -- if exit_code == 0 then
+      --   vim.notify(' Git Push: Pushed!', vim.log.levels.INFO)
+      -- else
+      --   vim.notify(' Git Push: Unable to push', vim.log.levels.ERROR)
+      -- end
     end,
   })
 end

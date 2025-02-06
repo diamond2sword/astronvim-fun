@@ -18,6 +18,27 @@ return {
           require('plugins.user.fn.git.push'),
           desc = " Git Push"
         },
+        ['<Leader>ps'] = { desc = "Shada Files" },
+        ['<Leader>psd'] = {
+          function()
+            local shada_dir = vim.fn.stdpath("state").."/shada"
+            vim.fn.jobstart('rm -rf '..shada_dir.."/*", {
+              on_exit = function()
+                vim.notify('Deleted Shada All Files')
+              end,
+            })
+          end,
+          desc = "Delete All Shada Files"
+        },
+        ['<Leader>sd'] = {
+          function()
+            local swp_file = vim.fn.swapname()
+            if swp_file ~= "" and vim.fn.filereadable(swp_file) then
+              vim.fn.delete(swp_file)
+            end
+          end,
+          desc = "Delete Buffer's Swap File"
+        },
       },
       v = {
         ["<C-c>"] = {
