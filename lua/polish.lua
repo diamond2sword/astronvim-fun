@@ -1,4 +1,4 @@
-require("user.polish")
+require("plugins.user.polish")
 
 if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 

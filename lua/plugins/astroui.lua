@@ -1,3 +1,5 @@
+if true then return require('plugins.user.ui') end
+
 if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroUI provides the basis for configuring the AstroNvim User Interface

@@ -8,6 +8,7 @@ end
 
 return {
   "AstroNvim/astrolsp",
+  lazy = true,
   opts = {
     -- enable servers that you already have installed without mason
     servers = {
