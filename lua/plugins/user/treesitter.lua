@@ -10,5 +10,5 @@ return {
       "cpp",
     },
   },
-  auto_install = false
+  auto_install = false,
 }
