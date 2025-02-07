@@ -33,9 +33,9 @@ pkg install wget git clang ripgrep
 	pkg install gdb lldb
 }
 
-#https://docs.astronvim.com/
+# https://docs.astronvim.com/
 {
-	#https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
+	# https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
 	(
 		mkdir -p ~/.termux
 		curl -LJ -o ~/.termux/font.ttf  https://raw.githubusercontent.com/diamond2sword/astronvim-fun/refs/heads/main/font/JetBrainsMonoNerdFontMono-Regular.ttf
