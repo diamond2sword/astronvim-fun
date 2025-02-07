@@ -13,6 +13,11 @@ pkg install wget git clang ripgrep
 }
 
 {
+	# explorer
+	pkg install vifm
+}
+
+{
 	#go-to-definition
 	pkg install man
 }
