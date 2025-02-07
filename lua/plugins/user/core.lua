@@ -11,13 +11,13 @@ return {
         lazyredraw = true,
         backup = false, -- no files
         writebackup = false,
+        undofile = true, -- persistent history
         synmaxcol = 200,
+        autoread = true,
         updatetime = 200, -- disagnostics
         timeoutlen = 250, -- keymaps
         ttimeoutlen = 0, -- instant key
         hidden = true, -- buffers
-        autoread = true,
-        undofile = true, -- persistent history
         redrawtime = 1000, -- timeout
         termguicolors = true, -- better colors
         laststatus = 2, -- simplify statusline
