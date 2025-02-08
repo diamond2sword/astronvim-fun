@@ -20,7 +20,7 @@ declare_strings () {
 	SSH_DIR_NAME=".ssh"
 	SSH_KEY_FILE_NAME="id_ed25519"
 	ROOT_PATH="$HOME"
-	REPO_PATH="$ROOT_PATH/.config/nvim"
+	REPO_PATH="$HOME/.config/nvim"
 	SSH_TRUE_DIR="$ROOT_PATH/$SSH_DIR_NAME"
 	SSH_SYSTEM="ed25519"
 	COMMIT_NAME="update project"
