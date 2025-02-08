@@ -3,11 +3,14 @@ return {
   lazy = "true",
   opts = {
     ensure_installed = {
+      -- neovim
       "vim",
-      "bash",
       "lua",
+      -- my langauges
+      "bash",
       "c",
       "cpp",
+      "python",
     },
   },
   auto_install = false,

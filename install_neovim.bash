@@ -27,7 +27,8 @@ pkg install wget git clang ripgrep
 	pkg install clang
 
 	# lsp
-	pkg install lua-language-server clang
+	pkg install lua-language-server clang nodejs-lts
+	npm install -g pyright
 
 	# debug
 	pkg install gdb lldb
