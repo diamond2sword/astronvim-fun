@@ -49,14 +49,15 @@ local toggleterm_cmd = function(cmd, opts)
     end,
   }
   table_override(default_opts, opts)
-  local echo_cmd = 'cat << "ECHO_CMD_EOF"\n'..cmd..'\nECHO_CMD_EOF'
+  local delimiter = "FN_TOGGLETERM_CMD_EOF"
+  local echo_cmd = 'cat << "'..delimiter..'"\n'..cmd..'\n'..delimiter
   local sleep_cmd = 'sleep '..default_opts.sleep
   default_opts.cmd = cmds_join({echo_cmd, default_opts.cmd, sleep_cmd})
 
   local Terminal = require("toggleterm.terminal").Terminal
   local term = Terminal:new(default_opts)
   term:toggle()
-  vim.notify(cmd..'\n\n'..'EXECUTING...')
+  vim.notify(cmd..'\n\n'..'EXECUTING...', vim.log.levels.INFO)
 end
 
 return toggleterm_cmd
